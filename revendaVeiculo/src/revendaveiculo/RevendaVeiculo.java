@@ -1,10 +1,10 @@
 package revendaveiculo;
 
 /**
- *
+ * 
  * @author Fernando, Gustavo 
  */
-public class RevendaVeiculo {
+class RevendaVeiculo {
 
     
     public static void main(String[] args) {
