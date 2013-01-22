@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 17/01/2013 12:55:45 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="entidades.Veiculo" table="veiculo" catalog="revveiculos">
+        <id name="idVeiculo" type="java.lang.Integer">
+            <column name="idVeiculo" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="compra" class="entidades.Compra" fetch="select">
+            <column name="idCompra" not-null="true" />
+        </many-to-one>
+        <property name="marca" type="string">
+            <column name="marca" length="45" not-null="true" />
+        </property>
+        <property name="cor" type="string">
+            <column name="cor" length="45" />
+        </property>
+        <property name="valor" type="string">
+            <column name="valor" length="45" />
+        </property>
+        <property name="km" type="java.lang.Integer">
+            <column name="km" />
+        </property>
+        <property name="tipo" type="string">
+            <column name="tipo" length="45" />
+        </property>
+        <set name="motos" inverse="true">
+            <key>
+                <column name="idMoto" not-null="true" unique="true" />
+            </key>
+            <one-to-many class="entidades.Moto" />
+        </set>
+        <set name="carros" inverse="true">
+            <key>
+                <column name="idCarro" not-null="true" unique="true" />
+            </key>
+            <one-to-many class="entidades.Carro" />
+        </set>
+    </class>
+</hibernate-mapping>
