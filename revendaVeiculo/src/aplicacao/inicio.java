@@ -50,7 +50,7 @@ public class inicio extends javax.swing.JFrame {
         });
         jMenu2.add(jMenuItem1);
 
-        jMenuItem3.setLabel("Veiuculos");
+        jMenuItem3.setText("Veículos");
         jMenu2.add(jMenuItem3);
 
         jMenuItem2.setText("Vendedor");

@@ -19,4 +19,3 @@ public interface InterfaceDAOGenerico {
     //public List listar (String Listar);
     public List listar ();
 }
-

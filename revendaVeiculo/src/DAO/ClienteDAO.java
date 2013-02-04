@@ -1,10 +1,10 @@
 package DAO;
 
-import org.hibernate.Session;
 import entidades.Cliente;
 import java.util.List;
 import javax.swing.JOptionPane;
 import org.hibernate.HibernateException;
+import org.hibernate.Session;
 import org.hibernate.Transaction;
 import util.HibernateUtil;
 
