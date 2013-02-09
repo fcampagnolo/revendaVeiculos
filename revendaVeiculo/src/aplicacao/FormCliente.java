@@ -1,16 +1,26 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package aplicacao;
 
+import DAO.ClienteDAO;
 import DAOGenerico.DAOGenerico;
 import entidades.Cliente;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import org.hibernate.Session;
+import util.HibernateUtil;
 
+/**
+ *
+ * @author Fernando
+ */
 public class FormCliente extends javax.swing.JFrame {
-
+    //retorna uma sessao para referencia
     String listar = "from Cliente";
-
     public FormCliente() {
         initComponents();
         preencherJTable();
@@ -27,10 +37,10 @@ public class FormCliente extends javax.swing.JFrame {
         label3 = new java.awt.Label();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        btNovo = new javax.swing.JButton();
-        btSalvar = new javax.swing.JButton();
-        btAlterar = new javax.swing.JButton();
-        btExcluir = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
         label4 = new java.awt.Label();
         tffTelefone = new javax.swing.JFormattedTextField();
         label5 = new java.awt.Label();
@@ -82,31 +92,31 @@ public class FormCliente extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTable1);
 
-        btNovo.setText("Novo");
-        btNovo.addActionListener(new java.awt.event.ActionListener() {
+        jButton1.setText("Novo");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btNovoActionPerformed(evt);
+                jButton1ActionPerformed(evt);
             }
         });
 
-        btSalvar.setText("Salvar");
-        btSalvar.addActionListener(new java.awt.event.ActionListener() {
+        jButton2.setText("Salvar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btSalvarActionPerformed(evt);
+                jButton2ActionPerformed(evt);
             }
         });
 
-        btAlterar.setText("Alterar");
-        btAlterar.addActionListener(new java.awt.event.ActionListener() {
+        jButton3.setText("Alterar");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btAlterarActionPerformed(evt);
+                jButton3ActionPerformed(evt);
             }
         });
 
-        btExcluir.setText("Excluir");
-        btExcluir.addActionListener(new java.awt.event.ActionListener() {
+        jButton4.setText("Excluir");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btExcluirActionPerformed(evt);
+                jButton4ActionPerformed(evt);
             }
         });
 
@@ -149,13 +159,13 @@ public class FormCliente extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(tfId, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btNovo)
+                        .addComponent(jButton1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btSalvar)
+                        .addComponent(jButton2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btAlterar)
+                        .addComponent(jButton3)
                         .addGap(21, 21, 21)
-                        .addComponent(btExcluir)
+                        .addComponent(jButton4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(label7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -209,10 +219,10 @@ public class FormCliente extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(btNovo)
-                                .addComponent(btSalvar)
-                                .addComponent(btAlterar)
-                                .addComponent(btExcluir))
+                                .addComponent(jButton1)
+                                .addComponent(jButton2)
+                                .addComponent(jButton3)
+                                .addComponent(jButton4))
                             .addComponent(tfPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 357, Short.MAX_VALUE))
@@ -233,6 +243,7 @@ public class FormCliente extends javax.swing.JFrame {
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         int linha = jTable1.getSelectedRow();
 
+        //Forma 2 - usando a classe aluno
         Cliente c = new Cliente();
         c.setIdCliente(Integer.parseInt(jTable1.getValueAt(linha, 0).toString()));
         c.setNome(jTable1.getValueAt(linha, 1).toString());
@@ -245,22 +256,26 @@ public class FormCliente extends javax.swing.JFrame {
         tffTelefone.setText(c.getTelefone());
         tfEmail.setText(c.getEmail());
         tfEndereco.setText(c.getEndereco());
+
     }//GEN-LAST:event_jTable1MouseClicked
 
-    private void btNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btNovoActionPerformed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         limparCampos();
-    }//GEN-LAST:event_btNovoActionPerformed
 
-    private void btSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalvarActionPerformed
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         try {
             Cliente c = new Cliente();
+            
             c.setNome(tfNome.getText());
             c.setTelefone(tffTelefone.getText());
             c.setEmail(tfEmail.getText());
             c.setEndereco(tfEndereco.getText());
-
-            DAOGenerico dao = new DAOGenerico(c);
-            dao.insere();
+            
+            //aki
+            DAOGenerico obj_cliente_dao = new DAOGenerico(c);
+            obj_cliente_dao.insere();
 
             limparCampos();
             preencherJTable();
@@ -268,11 +283,10 @@ public class FormCliente extends javax.swing.JFrame {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Erro Salvar registro: " + e);
         }
-    }//GEN-LAST:event_btSalvarActionPerformed
+    }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void btAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAlterarActionPerformed
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         Cliente c = new Cliente();
-
         c.setIdCliente(Integer.parseInt(tfId.getText()));
         c.setNome(tfNome.getText());
         c.setTelefone(tffTelefone.getText());
@@ -281,18 +295,17 @@ public class FormCliente extends javax.swing.JFrame {
 
         if (JOptionPane.showConfirmDialog(null, "Deseja realmente alterar este cliente?", "Alteração", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
             try {
-                DAOGenerico dao = new DAOGenerico(c);
-                dao.atualiza();
-
+                ClienteDAO obj_cliente_dao = new ClienteDAO();
+                obj_cliente_dao.atualizaAluno(c);
                 limparCampos();
                 preencherJTable();
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "Alteração: " + e);
             }
         }
-    }//GEN-LAST:event_btAlterarActionPerformed
+    }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void btExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExcluirActionPerformed
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         Cliente c = new Cliente();
         c.setIdCliente(Integer.parseInt(tfId.getText()));
         c.setNome(tfNome.getText());
@@ -302,18 +315,18 @@ public class FormCliente extends javax.swing.JFrame {
 
         if (JOptionPane.showConfirmDialog(null, "Deseja realmente excluir " + c.getNome().toUpperCase() + "?", "Exclusão", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
             try {
-                DAOGenerico dao = new DAOGenerico(c);
-                dao.excluir();
+                ClienteDAO obj_cliente_dao = new ClienteDAO();
+                obj_cliente_dao.excluirAluno(c);
                 limparCampos();
                 preencherJTable();
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "Erro Deletar: " + e);
             }
         }
-    }//GEN-LAST:event_btExcluirActionPerformed
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     private void tfPesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfPesquisaActionPerformed
-        listar = "from Cliente where upper(nome) like '" + tfPesquisa.getText().toUpperCase() + "%'";
+        listar = "from Cliente where upper(nome) like '"+tfPesquisa.getText().toUpperCase()+"%'";
         preencherJTable();
     }//GEN-LAST:event_tfPesquisaActionPerformed
 
@@ -356,10 +369,10 @@ public class FormCliente extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btAlterar;
-    private javax.swing.JButton btExcluir;
-    private javax.swing.JButton btNovo;
-    private javax.swing.JButton btSalvar;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private java.awt.Label label1;
@@ -378,16 +391,20 @@ public class FormCliente extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     public void preencherJTable() {
-        jTable1.getColumnModel().getColumn(0).setPreferredWidth(5);
+        jTable1.getColumnModel().getColumn(0).setPreferredWidth(5);        
+        
         DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
         modelo.setNumRows(0);
+        
         try {
-            DAOGenerico dao = new DAOGenerico(new Cliente());
+            ClienteDAO obj_cliente_dao = new ClienteDAO();
             List<Cliente> c = new ArrayList<Cliente>();
-            c = dao.listar(listar);
+            c = obj_cliente_dao.listarAlunos(listar);
+            
             for (Cliente cl : c) {
                 modelo.addRow(new Object[]{cl.getIdCliente(), cl.getNome(), cl.getTelefone(), cl.getEmail(), cl.getEndereco()});
             }
+
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Erro Lista JTABLE: " + e);
         }

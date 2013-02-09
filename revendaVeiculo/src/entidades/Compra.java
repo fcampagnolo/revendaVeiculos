@@ -1,5 +1,5 @@
 package entidades;
-// Generated 08/02/2013 11:45:22 by Hibernate Tools 3.2.1.GA
+// Generated 23/01/2013 14:28:34 by Hibernate Tools 3.2.1.GA
 
 
 import java.util.Date;

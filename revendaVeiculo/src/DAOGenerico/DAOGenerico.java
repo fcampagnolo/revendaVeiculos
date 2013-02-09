@@ -1,6 +1,8 @@
 package DAOGenerico;
 
+import DAO.*;
 import org.hibernate.Session;
+import entidades.Cliente;
 import java.util.List;
 import javax.swing.JOptionPane;
 import org.hibernate.HibernateException;
@@ -28,37 +30,21 @@ public class DAOGenerico<Obj> implements InterfaceDAOGenerico {
             JOptionPane.showMessageDialog(null, "Erro inserção: " + erro);
             transacao.rollback();
         }
+
     }
 
     @Override
     public void excluir() {
-        try {
-            transacao = sessao.beginTransaction();
-            sessao.delete(obj);
-            transacao.commit();
-        } catch (HibernateException erro) {
-            JOptionPane.showMessageDialog(null, "Erro Excluir DAO: " + erro);
-            transacao.rollback();
-        }
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
     public void atualiza() {
-        try {
-            transacao = sessao.beginTransaction();
-            sessao.update(obj);
-            transacao.commit();
-        } catch (HibernateException erro) {
-            JOptionPane.showMessageDialog(null, "Erro Atualiza DAO: " + erro);
-            transacao.rollback();
-        }
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
-    public List listar(String listar) {
-        transacao = sessao.beginTransaction();
-        List lista_clientes = sessao.createQuery(listar).list();
-        transacao.commit();
-        return lista_clientes;
+    public List listar() {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 }
