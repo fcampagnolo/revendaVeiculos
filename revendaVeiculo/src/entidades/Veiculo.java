@@ -1,5 +1,5 @@
 package entidades;
-// Generated 23/01/2013 14:28:34 by Hibernate Tools 3.2.1.GA
+// Generated 08/02/2013 11:45:22 by Hibernate Tools 3.2.1.GA
 
 
 import java.util.HashSet;
@@ -18,6 +18,7 @@ public class Veiculo  implements java.io.Serializable {
      private String valor;
      private Integer km;
      private String tipo;
+     private String nome;
      private Set motos = new HashSet(0);
      private Set carros = new HashSet(0);
 
@@ -25,17 +26,19 @@ public class Veiculo  implements java.io.Serializable {
     }
 
 	
-    public Veiculo(Compra compra, String marca) {
+    public Veiculo(Compra compra, String marca, String nome) {
         this.compra = compra;
         this.marca = marca;
+        this.nome = nome;
     }
-    public Veiculo(Compra compra, String marca, String cor, String valor, Integer km, String tipo, Set motos, Set carros) {
+    public Veiculo(Compra compra, String marca, String cor, String valor, Integer km, String tipo, String nome, Set motos, Set carros) {
        this.compra = compra;
        this.marca = marca;
        this.cor = cor;
        this.valor = valor;
        this.km = km;
        this.tipo = tipo;
+       this.nome = nome;
        this.motos = motos;
        this.carros = carros;
     }
@@ -88,6 +91,13 @@ public class Veiculo  implements java.io.Serializable {
     
     public void setTipo(String tipo) {
         this.tipo = tipo;
+    }
+    public String getNome() {
+        return this.nome;
+    }
+    
+    public void setNome(String nome) {
+        this.nome = nome;
     }
     public Set getMotos() {
         return this.motos;

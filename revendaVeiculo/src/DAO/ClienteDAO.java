@@ -1,7 +1,7 @@
 package DAO;
 
 import org.hibernate.Session;
-import entidades.Cliente;
+import entidades.*;
 import java.util.List;
 import javax.swing.JOptionPane;
 import org.hibernate.HibernateException;
@@ -45,11 +45,15 @@ public class ClienteDAO implements InterfaceALunoDAO {
     @Override
     public void atualizaAluno(Cliente cliente) {
         try {
-            tx_aluno = sessao.beginTransaction();
-            sessao.update(cliente);
-            tx_aluno.commit();
+            Session s = HibernateUtil.getSessionFactory().getCurrentSession(); //retorna uma sessao para referencia
+            s.beginTransaction(); // abre a sessao para incluir, recuperar deletar os objetos na base de dados
+            s.update(cliente);
+            s.getTransaction().commit(); //fexa seçao e encerra transaçõe
+//            tx_aluno = sessao.beginTransaction();
+//            sessao.update(cliente);
+//            tx_aluno.commit();
         } catch (HibernateException erro) {
-            JOptionPane.showMessageDialog(null, "Erro alteração: " + erro);
+            JOptionPane.showMessageDialog(null, "Erro alteração fu: " + erro);
             tx_aluno.rollback();
         }
     }
