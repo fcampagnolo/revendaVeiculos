@@ -1,9 +1,9 @@
 package DAOGenerico;
 
-import org.hibernate.Session;
 import java.util.List;
 import javax.swing.JOptionPane;
 import org.hibernate.HibernateException;
+import org.hibernate.Session;
 import org.hibernate.Transaction;
 import util.HibernateUtil;
 

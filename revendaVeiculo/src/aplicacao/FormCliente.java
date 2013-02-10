@@ -32,7 +32,7 @@ public class FormCliente extends javax.swing.JFrame {
         btAlterar = new javax.swing.JButton();
         btExcluir = new javax.swing.JButton();
         label4 = new java.awt.Label();
-        tffTelefone = new javax.swing.JFormattedTextField();
+        tfTelefone = new javax.swing.JFormattedTextField();
         label5 = new java.awt.Label();
         tfEmail = new java.awt.TextField();
         tfId = new javax.swing.JTextField();
@@ -64,7 +64,7 @@ public class FormCliente extends javax.swing.JFrame {
                 {null, null, null, null, null}
             },
             new String [] {
-                "Id", "Nome", "Telefone", "E-mail", "Endereço"
+                "ID", "Nome", "Telefone", "E-mail", "Endereço"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -114,19 +114,19 @@ public class FormCliente extends javax.swing.JFrame {
         label4.setText("Telefone:");
 
         try {
-            tffTelefone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)####-####")));
+            tfTelefone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)####-####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
 
         label5.setAlignment(java.awt.Label.RIGHT);
-        label5.setText("E-Mail:");
+        label5.setText("E-mail:");
 
         tfId.setEditable(false);
 
         label6.setText("ID:");
 
-        label7.setText("Pesquisa.:");
+        label7.setText("Pesquisa:");
 
         tfPesquisa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -177,7 +177,7 @@ public class FormCliente extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(label4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tffTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(tfTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(1, 1, 1))
                             .addComponent(tfEndereco, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
@@ -198,7 +198,7 @@ public class FormCliente extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(label5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tfEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tffTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(label4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -242,7 +242,7 @@ public class FormCliente extends javax.swing.JFrame {
 
         tfId.setText(c.getIdCliente().toString());
         tfNome.setText(c.getNome());
-        tffTelefone.setText(c.getTelefone());
+        tfTelefone.setText(c.getTelefone());
         tfEmail.setText(c.getEmail());
         tfEndereco.setText(c.getEndereco());
     }//GEN-LAST:event_jTable1MouseClicked
@@ -255,7 +255,7 @@ public class FormCliente extends javax.swing.JFrame {
         try {
             Cliente c = new Cliente();
             c.setNome(tfNome.getText());
-            c.setTelefone(tffTelefone.getText());
+            c.setTelefone(tfTelefone.getText());
             c.setEmail(tfEmail.getText());
             c.setEndereco(tfEndereco.getText());
 
@@ -275,7 +275,7 @@ public class FormCliente extends javax.swing.JFrame {
 
         c.setIdCliente(Integer.parseInt(tfId.getText()));
         c.setNome(tfNome.getText());
-        c.setTelefone(tffTelefone.getText());
+        c.setTelefone(tfTelefone.getText());
         c.setEmail(tfEmail.getText());
         c.setEndereco(tfEndereco.getText());
 
@@ -296,7 +296,7 @@ public class FormCliente extends javax.swing.JFrame {
         Cliente c = new Cliente();
         c.setIdCliente(Integer.parseInt(tfId.getText()));
         c.setNome(tfNome.getText());
-        c.setTelefone(tffTelefone.getText());
+        c.setTelefone(tfTelefone.getText());
         c.setEmail(tfEmail.getText());
         c.setEndereco(tfEndereco.getText());
 
@@ -374,7 +374,7 @@ public class FormCliente extends javax.swing.JFrame {
     private javax.swing.JTextField tfId;
     private java.awt.TextField tfNome;
     private javax.swing.JTextField tfPesquisa;
-    private javax.swing.JFormattedTextField tffTelefone;
+    private javax.swing.JFormattedTextField tfTelefone;
     // End of variables declaration//GEN-END:variables
 
     public void preencherJTable() {
@@ -397,7 +397,7 @@ public class FormCliente extends javax.swing.JFrame {
         tfId.setText("");
         tfNome.setText("");
         tfEmail.setText("");
-        tffTelefone.setText("");
+        tfTelefone.setText("");
         tfEndereco.setText("");
     }
 }
