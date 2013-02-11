@@ -9,6 +9,7 @@ import entidades.Cliente;
 import entidades.Compra;
 import entidades.Veiculo;
 import entidades.Vendedor;
+import java.awt.JobAttributes;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -51,7 +52,7 @@ public class FormCompra extends javax.swing.JFrame {
         jTableCliente = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         label1.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
         label1.setText("Compras");
@@ -232,18 +233,18 @@ public class FormCompra extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-        
+
         int linhaCliente = jTableCliente.getSelectedRow();
         Cliente c = new Cliente();
         c.setIdCliente(Integer.parseInt(jTableCliente.getValueAt(linhaCliente, 0).toString()));
-        
+
         int linhaVeiculo = jTableVeiculo.getSelectedRow();
         Veiculo v = new Veiculo();
         v.setIdVeiculo(Integer.parseInt(jTableVeiculo.getValueAt(linhaVeiculo, 0).toString()));
         v.setValor(Double.parseDouble(jTableVeiculo.getValueAt(linhaVeiculo, 2).toString()));
-        
+
         Vendedor ven = new Vendedor(); ///ver isso !
-        ven.setIdVendedor(1);
+        ven.setIdVendedor(FormMenu.v.getIdVendedor());
 
         Compra com = new Compra();
         com.setCliente(c);
@@ -251,11 +252,16 @@ public class FormCompra extends javax.swing.JFrame {
         com.setVendedor(ven);
         com.setData(new Date());
         com.setTotal(v.getValor());
-        
-        JOptionPane.showMessageDialog(null, "teste");
-        
-        DAOGenerico dao = new DAOGenerico(com);
-        dao.insere();
+
+        if (JOptionPane.showConfirmDialog(null, "Deseja realmente Efetuar essa compra?\nValor="+com.getTotal(), "Compra", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+            try {
+                DAOGenerico dao = new DAOGenerico(com);
+                dao.insere();
+                JOptionPane.showMessageDialog(null, "Compra efetuada com sucesso!");
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Compra: " + e);
+            }
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

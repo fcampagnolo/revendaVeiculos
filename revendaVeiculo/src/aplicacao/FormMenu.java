@@ -4,6 +4,7 @@
  */
 package aplicacao;
 
+import entidades.Vendedor;
 import javax.swing.JFrame;
 
 /**
@@ -12,11 +13,12 @@ import javax.swing.JFrame;
  */
 public class FormMenu extends javax.swing.JFrame {
 
-    /**
-     * Creates new form FormMenu
-     */
-    public FormMenu() {
+    static public Vendedor v;
+
+    public FormMenu(Vendedor v) {
+        this.v = v;
         initComponents();
+        mVendedor.setEnabled(v.getAdm());
     }
 
     /**
@@ -30,6 +32,8 @@ public class FormMenu extends javax.swing.JFrame {
 
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
         jMenuBar1 = new javax.swing.JMenuBar();
         menuFile = new javax.swing.JMenu();
         mSair = new javax.swing.JMenuItem();
@@ -37,12 +41,17 @@ public class FormMenu extends javax.swing.JFrame {
         mCliente = new javax.swing.JMenuItem();
         mVeiculo = new javax.swing.JMenuItem();
         mVendedor = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
 
         jMenuItem1.setText("jMenuItem1");
 
         jMenu1.setText("jMenu1");
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jMenuItem2.setText("jMenuItem2");
+
+        jMenuItem3.setText("jMenuItem3");
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         menuFile.setText("File");
 
@@ -75,6 +84,7 @@ public class FormMenu extends javax.swing.JFrame {
         menuCadastro.add(mVeiculo);
 
         mVendedor.setText("Vendedor");
+        mVendedor.setEnabled(false);
         mVendedor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mVendedorActionPerformed(evt);
@@ -83,6 +93,14 @@ public class FormMenu extends javax.swing.JFrame {
         menuCadastro.add(mVendedor);
 
         jMenuBar1.add(menuCadastro);
+
+        jMenu2.setText("Compra");
+        jMenu2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu2MouseClicked(evt);
+            }
+        });
+        jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
 
@@ -119,6 +137,11 @@ public class FormMenu extends javax.swing.JFrame {
         janela.setVisible(true);
     }//GEN-LAST:event_mVeiculoActionPerformed
 
+    private void jMenu2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu2MouseClicked
+        JFrame janela = new FormCompra();
+        janela.setVisible(true);
+    }//GEN-LAST:event_jMenu2MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -149,14 +172,17 @@ public class FormMenu extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FormMenu().setVisible(true);
+                //new FormMenu().setVisible(true);
             }
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem mCliente;
     private javax.swing.JMenuItem mSair;
     private javax.swing.JMenuItem mVeiculo;

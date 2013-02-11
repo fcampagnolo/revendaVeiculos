@@ -5,6 +5,7 @@
 package aplicacao;
 
 import entidades.Cliente;
+import entidades.Vendedor;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JFrame;
@@ -35,19 +36,17 @@ public class FormLogin extends javax.swing.JFrame {
     private void initComponents() {
 
         tfUsr = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         btLogin = new javax.swing.JButton();
         btSair = new javax.swing.JButton();
         label1 = new java.awt.Label();
+        tfSenha = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         tfUsr.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         tfUsr.setName("tbUsr"); // NOI18N
-
-        jTextField2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel1.setText("Usuário:");
@@ -84,7 +83,6 @@ public class FormLogin extends javax.swing.JFrame {
                 .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(tfUsr, javax.swing.GroupLayout.DEFAULT_SIZE, 159, Short.MAX_VALUE)
-                    .addComponent(jTextField2)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -92,7 +90,8 @@ public class FormLogin extends javax.swing.JFrame {
                                 .addComponent(btLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(btSair, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(tfSenha))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -106,13 +105,13 @@ public class FormLogin extends javax.swing.JFrame {
                     .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
+                    .addComponent(jLabel2)
+                    .addComponent(tfSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btLogin)
                     .addComponent(btSair))
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addContainerGap(13, Short.MAX_VALUE))
         );
 
         pack();
@@ -123,12 +122,14 @@ public class FormLogin extends javax.swing.JFrame {
             Session s = HibernateUtil.getSessionFactory().getCurrentSession(); //retorna uma sessao para referencia
             s.beginTransaction(); // abre a sessao para incluir, recuperar deletar os objetos na base de dados
 
-            List<Cliente> c = new ArrayList<Cliente>();
-            c = s.createQuery("from Cliente where nome = '" + tfUsr.getText() + "'").list();
-            //s.getTransaction().commit(); //fexa seçao e encerra transaçõe
+            List<Vendedor> v = new ArrayList<Vendedor>();
+            v = s.createQuery("from Vendedor where login = '" + tfUsr.getText() + "' and senha = '"+ tfSenha.getText() +"'").list();
+            s.getTransaction().commit(); //fexa seçao e encerra transaçõe
 
-            if (c.size() > 0) {
-                JFrame telaInicial = new FormCliente();
+            if (v.size() > 0) {
+                Vendedor ven = v.get(0);
+                //System.out.println(ven.getIdVendedor());
+                JFrame telaInicial = new FormMenu(ven);
                 telaInicial.setVisible(true);
             } else {
                 JOptionPane.showMessageDialog(null, "Login ou senha incorretos!");
@@ -183,8 +184,8 @@ public class FormLogin extends javax.swing.JFrame {
     private javax.swing.JButton btSair;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JTextField jTextField2;
     private java.awt.Label label1;
+    private javax.swing.JPasswordField tfSenha;
     private javax.swing.JTextField tfUsr;
     // End of variables declaration//GEN-END:variables
 }
