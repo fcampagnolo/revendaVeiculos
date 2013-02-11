@@ -18,6 +18,7 @@ public class FormMenu extends javax.swing.JFrame {
     public FormMenu(Vendedor v) {
         this.v = v;
         initComponents();
+        FramePosition.setPosicao(this);
         mVendedor.setEnabled(v.getAdm());
     }
 

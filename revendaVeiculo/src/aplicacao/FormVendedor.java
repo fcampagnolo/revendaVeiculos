@@ -14,6 +14,7 @@ public class FormVendedor extends javax.swing.JFrame {
     
     public FormVendedor() {
         initComponents();
+        FramePosition.setPosicao(this);
         preencherJTable();
     }
 

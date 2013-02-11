@@ -13,6 +13,7 @@ public class FormVeiculo extends javax.swing.JFrame {
 
     public FormVeiculo() {
         initComponents();
+        FramePosition.setPosicao(this);
         preencherJTable();
     }
 

@@ -13,6 +13,7 @@ public class FormCliente extends javax.swing.JFrame {
 
     public FormCliente() {
         initComponents();
+        FramePosition.setPosicao(this);
         preencherJTable();
     }
 

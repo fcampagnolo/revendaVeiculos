@@ -23,6 +23,7 @@ public class FormCompra extends javax.swing.JFrame {
 
     public FormCompra() {
         initComponents();
+        FramePosition.setPosicao(this);
     }
 
     /**

@@ -8,14 +8,11 @@ import javax.swing.JOptionPane;
 import org.hibernate.Session;
 import util.HibernateUtil;
 
-/**
- *
- * @author Fernando
- */
 public class FormLogin extends javax.swing.JFrame {
 
     public FormLogin() {
         initComponents();
+        FramePosition.setPosicao(this);
     }
 
     @SuppressWarnings("unchecked")
