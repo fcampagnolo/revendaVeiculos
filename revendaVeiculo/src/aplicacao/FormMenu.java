@@ -35,9 +35,7 @@ public class FormMenu extends javax.swing.JFrame {
         mSair = new javax.swing.JMenuItem();
         menuCadastro = new javax.swing.JMenu();
         mCliente = new javax.swing.JMenuItem();
-        mVeiculo = new javax.swing.JMenu();
-        mCarro = new javax.swing.JMenuItem();
-        mMoto = new javax.swing.JMenuItem();
+        mVeiculo = new javax.swing.JMenuItem();
         mVendedor = new javax.swing.JMenuItem();
 
         jMenuItem1.setText("jMenuItem1");
@@ -69,23 +67,6 @@ public class FormMenu extends javax.swing.JFrame {
         menuCadastro.add(mCliente);
 
         mVeiculo.setText("Veículo");
-
-        mCarro.setText("Carro");
-        mCarro.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mCarroActionPerformed(evt);
-            }
-        });
-        mVeiculo.add(mCarro);
-
-        mMoto.setText("Moto");
-        mMoto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mMotoActionPerformed(evt);
-            }
-        });
-        mVeiculo.add(mMoto);
-
         menuCadastro.add(mVeiculo);
 
         mVendedor.setText("Vendedor");
@@ -128,16 +109,6 @@ public class FormMenu extends javax.swing.JFrame {
         janela.setVisible(true);
     }//GEN-LAST:event_mVendedorActionPerformed
 
-    private void mCarroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mCarroActionPerformed
-        //JFrame janela = new FormCarro();
-        //janela.setVisible(true);
-    }//GEN-LAST:event_mCarroActionPerformed
-
-    private void mMotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mMotoActionPerformed
-        //JFrame janela = new FormMoto();
-        //janela.setVisible(true);
-    }//GEN-LAST:event_mMotoActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -176,11 +147,9 @@ public class FormMenu extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem mCarro;
     private javax.swing.JMenuItem mCliente;
-    private javax.swing.JMenuItem mMoto;
     private javax.swing.JMenuItem mSair;
-    private javax.swing.JMenu mVeiculo;
+    private javax.swing.JMenuItem mVeiculo;
     private javax.swing.JMenuItem mVendedor;
     private javax.swing.JMenu menuCadastro;
     private javax.swing.JMenu menuFile;

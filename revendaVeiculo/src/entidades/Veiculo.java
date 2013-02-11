@@ -11,9 +11,13 @@ public class Veiculo implements java.io.Serializable {
     
     private Integer idVeiculo;
     private Compra compra;
+    private String placa;
     private String marca;
+    private String modelo;
     private String cor;
+    private String status;
     private String valor;
+    private String combustivel;
     private Integer km;
     private String tipo;
     private Set motos = new HashSet(0);
@@ -38,7 +42,7 @@ public class Veiculo implements java.io.Serializable {
     }
    
     public Integer getIdVeiculo() {
-        return this.idVeiculo;
+        return idVeiculo;
     }
     
     public void setIdVeiculo(Integer idVeiculo) {
@@ -46,15 +50,23 @@ public class Veiculo implements java.io.Serializable {
     }
     
     public Compra getCompra() {
-        return this.compra;
+        return compra;
     }
     
     public void setCompra(Compra compra) {
         this.compra = compra;
     }
     
+    public String getModelo() {
+        return modelo;
+    }
+    
+    public void setModelo(String modelo) {
+        this.modelo = modelo;
+    }
+    
     public String getMarca() {
-        return this.marca;
+        return marca;
     }
     
     public void setMarca(String marca) {
@@ -62,7 +74,7 @@ public class Veiculo implements java.io.Serializable {
     }
     
     public String getCor() {
-        return this.cor;
+        return cor;
     }
     
     public void setCor(String cor) {
@@ -70,7 +82,7 @@ public class Veiculo implements java.io.Serializable {
     }
     
     public String getValor() {
-        return this.valor;
+        return valor;
     }
     
     public void setValor(String valor) {
@@ -78,7 +90,7 @@ public class Veiculo implements java.io.Serializable {
     }
     
     public Integer getKm() {
-        return this.km;
+        return km;
     }
     
     public void setKm(Integer km) {
@@ -86,7 +98,7 @@ public class Veiculo implements java.io.Serializable {
     }
     
     public String getTipo() {
-        return this.tipo;
+        return tipo;
     }
     
     public void setTipo(String tipo) {
@@ -94,7 +106,7 @@ public class Veiculo implements java.io.Serializable {
     }
     
     public Set getMotos() {
-        return this.motos;
+        return motos;
     }
     
     public void setMotos(Set motos) {
@@ -102,7 +114,7 @@ public class Veiculo implements java.io.Serializable {
     }
     
     public Set getCarros() {
-        return this.carros;
+        return carros;
     }
     
     public void setCarros(Set carros) {
