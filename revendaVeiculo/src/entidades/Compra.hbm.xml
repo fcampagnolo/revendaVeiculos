@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated 23/01/2013 14:28:35 by Hibernate Tools 3.2.1.GA -->
+<!-- Generated 11/02/2013 16:30:39 by Hibernate Tools 3.2.1.GA -->
 <hibernate-mapping>
     <class name="entidades.Compra" table="compra" catalog="revveiculos">
         <id name="idCompra" type="java.lang.Integer">
@@ -10,6 +10,9 @@
         </id>
         <many-to-one name="vendedor" class="entidades.Vendedor" fetch="select">
             <column name="idVendedor" not-null="true" />
+        </many-to-one>
+        <many-to-one name="veiculo" class="entidades.Veiculo" fetch="select">
+            <column name="IdVeiculo" not-null="true" />
         </many-to-one>
         <many-to-one name="cliente" class="entidades.Cliente" fetch="select">
             <column name="idCliente" not-null="true" />
@@ -20,11 +23,5 @@
         <property name="total" type="double">
             <column name="total" precision="22" scale="0" not-null="true" />
         </property>
-        <set name="veiculos" inverse="true">
-            <key>
-                <column name="idCompra" not-null="true" />
-            </key>
-            <one-to-many class="entidades.Veiculo" />
-        </set>
     </class>
 </hibernate-mapping>

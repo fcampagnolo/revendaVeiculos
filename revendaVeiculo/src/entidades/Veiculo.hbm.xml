@@ -1,24 +1,33 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated 23/01/2013 14:28:35 by Hibernate Tools 3.2.1.GA -->
+<!-- Generated 11/02/2013 16:30:39 by Hibernate Tools 3.2.1.GA -->
 <hibernate-mapping>
     <class name="entidades.Veiculo" table="veiculo" catalog="revveiculos">
         <id name="idVeiculo" type="java.lang.Integer">
             <column name="idVeiculo" />
             <generator class="identity" />
         </id>
-        <many-to-one name="compra" class="entidades.Compra" fetch="select">
-            <column name="idCompra" not-null="true" />
-        </many-to-one>
+        <property name="placa" type="string">
+            <column name="placa" length="6" not-null="true" />
+        </property>
+        <property name="modelo" type="string">
+            <column name="modelo" length="45" not-null="true" />
+        </property>
         <property name="marca" type="string">
             <column name="marca" length="45" not-null="true" />
         </property>
         <property name="cor" type="string">
             <column name="cor" length="45" />
         </property>
-        <property name="valor" type="string">
-            <column name="valor" length="45" />
+        <property name="status" type="string">
+            <column name="status" length="45" />
+        </property>
+        <property name="valor" type="java.lang.Double">
+            <column name="valor" precision="22" scale="0" />
+        </property>
+        <property name="combustivel" type="string">
+            <column name="combustivel" length="45" />
         </property>
         <property name="km" type="java.lang.Integer">
             <column name="km" />
@@ -37,6 +46,12 @@
                 <column name="idCarro" not-null="true" unique="true" />
             </key>
             <one-to-many class="entidades.Carro" />
+        </set>
+        <set name="compras" inverse="true">
+            <key>
+                <column name="IdVeiculo" not-null="true" />
+            </key>
+            <one-to-many class="entidades.Compra" />
         </set>
     </class>
 </hibernate-mapping>

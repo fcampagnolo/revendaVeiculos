@@ -10,7 +10,7 @@ import javax.swing.table.DefaultTableModel;
 public class FormVeiculo extends javax.swing.JFrame {
 
     String listar = "from Veiculo";
-    
+
     public FormVeiculo() {
         initComponents();
         preencherJTable();
@@ -303,7 +303,7 @@ public class FormVeiculo extends javax.swing.JFrame {
         tfKm.setText("");
         tfTipo.setText("");
     }
-    
+
     private void btNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btNovoActionPerformed
         limparCampos();
     }//GEN-LAST:event_btNovoActionPerformed
@@ -316,7 +316,7 @@ public class FormVeiculo extends javax.swing.JFrame {
             v.setPlaca(tfPlaca.getText());
             v.setCor(tfCor.getText());
             v.setCombustivel(tfCombustivel.getText());
-            v.setValor(tfValor.getText());
+            v.setValor(Double.parseDouble(tfValor.getText()));
             v.setStatus(tfStatus.getText());
             v.setKm(Integer.parseInt(tfKm.getText()));
             v.setTipo(tfTipo.getText());
@@ -334,18 +334,19 @@ public class FormVeiculo extends javax.swing.JFrame {
 
     private void btAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAlterarActionPerformed
         Veiculo v = new Veiculo();
+        v.setIdVeiculo(Integer.parseInt(tfId.getText()));
         v.setModelo(tfModelo.getText());
         v.setMarca(tfMarca.getText());
         v.setPlaca(tfPlaca.getText());
         v.setCor(tfCor.getText());
         v.setCombustivel(tfCombustivel.getText());
-        v.setValor(tfValor.getText());
+        v.setValor(Double.parseDouble(tfValor.getText()));
         v.setStatus(tfStatus.getText());
         v.setKm(Integer.parseInt(tfKm.getText()));
-        v.setTipo(tfTipo.getText());
-        
+        //v.setTipo(tfTipo.getText());
+
         if (JOptionPane.showConfirmDialog(null, "Deseja realmente alterar este veículo?",
-            "Alteração", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+                "Alteração", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
             try {
                 DAOGenerico dao = new DAOGenerico(v);
                 dao.atualiza();
@@ -360,18 +361,19 @@ public class FormVeiculo extends javax.swing.JFrame {
 
     private void btExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExcluirActionPerformed
         Veiculo v = new Veiculo();
-        v.setModelo(tfModelo.getText());
-        v.setMarca(tfMarca.getText());
-        v.setPlaca(tfPlaca.getText());
-        v.setCor(tfCor.getText());
-        v.setCombustivel(tfCombustivel.getText());
-        v.setValor(tfValor.getText());
-        v.setStatus(tfStatus.getText());
-        v.setKm(Integer.parseInt(tfKm.getText()));
-        v.setTipo(tfTipo.getText());
-        
-        if (JOptionPane.showConfirmDialog(null, "Deseja realmente excluir " + 
-            v.getModelo().toUpperCase() + "?", "Exclusão", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+        v.setIdVeiculo(Integer.parseInt(tfId.getText()));
+//        v.setModelo(tfModelo.getText());
+//        v.setMarca(tfMarca.getText());
+//        v.setPlaca(tfPlaca.getText());
+//        v.setCor(tfCor.getText());
+//        v.setCombustivel(tfCombustivel.getText());
+//        v.setValor(Double.parseDouble(tfValor.getText()));
+//        v.setStatus(tfStatus.getText());
+//        v.setKm(Integer.parseInt(tfKm.getText()));
+//        v.setTipo(tfTipo.getText());
+
+        if (JOptionPane.showConfirmDialog(null, "Deseja realmente excluir "
+                + v.getModelo().toUpperCase() + "?", "Exclusão", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
             try {
                 DAOGenerico dao = new DAOGenerico(v);
                 dao.excluir();
@@ -394,7 +396,7 @@ public class FormVeiculo extends javax.swing.JFrame {
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         int linha = jTable1.getSelectedRow();
-        
+
         Veiculo v = new Veiculo();
         v.setIdVeiculo(Integer.parseInt(jTable1.getValueAt(linha, 0).toString()));
         v.setModelo(jTable1.getValueAt(linha, 1).toString());
@@ -402,18 +404,18 @@ public class FormVeiculo extends javax.swing.JFrame {
         v.setPlaca(jTable1.getValueAt(linha, 3).toString());
         v.setCor(jTable1.getValueAt(linha, 4).toString());
         v.setCombustivel(jTable1.getValueAt(linha, 5).toString());
-        v.setValor(jTable1.getValueAt(linha, 6).toString());
+        v.setValor(Double.parseDouble(jTable1.getValueAt(linha, 6).toString()));
         v.setStatus(jTable1.getValueAt(linha, 7).toString());
         v.setKm(Integer.parseInt(jTable1.getValueAt(linha, 8).toString()));
         v.setTipo(jTable1.getValueAt(linha, 9).toString());
-        
+
         tfId.setText(v.getIdVeiculo().toString());
         tfModelo.setText(v.getModelo());
         tfMarca.setText(v.getMarca());
         tfPlaca.setText(v.getPlaca());
         tfCor.setText(v.getCor());
         tfCombustivel.setText(v.getCombustivel());
-        tfValor.setText(v.getValor());
+        tfValor.setText(v.getValor().toString());
         tfStatus.setText(v.getStatus());
         tfKm.setText(v.getKm().toString());
         tfTipo.setText(v.getTipo());
@@ -429,15 +431,15 @@ public class FormVeiculo extends javax.swing.JFrame {
             v = dao.listar(listar);
             for (Veiculo x : v) {
                 modelo.addRow(new Object[]{x.getIdVeiculo(), x.getPlaca(),
-                              x.getModelo(), x.getMarca(), x.getCor(),
-                              x.getCombustivel(), x.getValor(), x.getStatus(),
-                              x.getKm(), x.getTipo()});
+                            x.getModelo(), x.getMarca(), x.getCor(),
+                            x.getCombustivel(), x.getValor(), x.getStatus(),
+                            x.getKm(), x.getTipo()});
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Erro Lista JTABLE: " + e);
         }
     }
-    
+
     /**
      * @param args the command line arguments
      */
