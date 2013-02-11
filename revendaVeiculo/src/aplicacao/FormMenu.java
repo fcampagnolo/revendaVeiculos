@@ -67,6 +67,11 @@ public class FormMenu extends javax.swing.JFrame {
         menuCadastro.add(mCliente);
 
         mVeiculo.setText("Veículo");
+        mVeiculo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mVeiculoActionPerformed(evt);
+            }
+        });
         menuCadastro.add(mVeiculo);
 
         mVendedor.setText("Vendedor");
@@ -108,6 +113,11 @@ public class FormMenu extends javax.swing.JFrame {
         JFrame janela = new FormVendedor();
         janela.setVisible(true);
     }//GEN-LAST:event_mVendedorActionPerformed
+
+    private void mVeiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mVeiculoActionPerformed
+        JFrame janela = new FormVeiculo();
+        janela.setVisible(true);
+    }//GEN-LAST:event_mVeiculoActionPerformed
 
     /**
      * @param args the command line arguments

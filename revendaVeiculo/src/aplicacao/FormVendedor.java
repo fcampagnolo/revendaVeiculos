@@ -72,7 +72,7 @@ public class FormVendedor extends javax.swing.JFrame {
         tfEmail.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
         tfTelefone.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        tfTelefone.setText("(  )    -    ");
+        tfTelefone.setText("() - ");
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel6.setText("Login:");
@@ -293,7 +293,6 @@ public class FormVendedor extends javax.swing.JFrame {
 
     private void btAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAlterarActionPerformed
         Vendedor v = new Vendedor();
-
         v.setIdVendedor(Integer.parseInt(tfId.getText()));
         v.setNome(tfNome.getText());
         v.setTelefone(tfTelefone.getText());

@@ -57,6 +57,14 @@ public class Veiculo implements java.io.Serializable {
         this.compra = compra;
     }
     
+    public String getPlaca() {
+        return placa;
+    }
+    
+    public void setPlaca(String placa) {
+        this.placa = placa;
+    }
+    
     public String getModelo() {
         return modelo;
     }
@@ -87,6 +95,22 @@ public class Veiculo implements java.io.Serializable {
     
     public void setValor(String valor) {
         this.valor = valor;
+    }
+    
+    public String getCombustivel() {
+        return combustivel;
+    }
+    
+    public void setCombustivel(String combustivel) {
+        this.combustivel = combustivel;
+    }
+    
+    public String getStatus() {
+        return status;
+    }
+    
+    public void setStatus(String status) {
+        this.status = status;
     }
     
     public Integer getKm() {

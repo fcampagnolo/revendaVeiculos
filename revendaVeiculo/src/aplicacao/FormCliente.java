@@ -125,7 +125,7 @@ public class FormCliente extends javax.swing.JFrame {
         jLabel5.setText("Telefone:");
 
         tfTelefone.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        tfTelefone.setText("(  )    -    ");
+        tfTelefone.setText("() - ");
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel6.setText("Endereço:");
