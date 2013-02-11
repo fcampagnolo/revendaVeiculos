@@ -34,11 +34,11 @@ public class FormCliente extends javax.swing.JFrame {
         tfNome = new javax.swing.JTextField();
         tfEmail = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        tfTelefone = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         tfEndereco = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         tfPesquisa = new javax.swing.JTextField();
+        tfTelefone = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -124,9 +124,6 @@ public class FormCliente extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel5.setText("Telefone:");
 
-        tfTelefone.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        tfTelefone.setText("() - ");
-
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel6.setText("Endereço:");
 
@@ -141,6 +138,12 @@ public class FormCliente extends javax.swing.JFrame {
                 tfPesquisaActionPerformed(evt);
             }
         });
+
+        try {
+            tfTelefone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)####-####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -180,11 +183,12 @@ public class FormCliente extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(tfEmail)
+                                .addComponent(tfEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 427, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(jLabel5)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(tfTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(tfTelefone)
+                                .addGap(1, 1, 1))
                             .addComponent(tfNome))))
                 .addContainerGap())
         );
@@ -372,7 +376,7 @@ public class FormCliente extends javax.swing.JFrame {
     private javax.swing.JTextField tfId;
     private javax.swing.JTextField tfNome;
     private javax.swing.JTextField tfPesquisa;
-    private javax.swing.JTextField tfTelefone;
+    private javax.swing.JFormattedTextField tfTelefone;
     // End of variables declaration//GEN-END:variables
 
     public void preencherJTable() {

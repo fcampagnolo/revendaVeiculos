@@ -201,7 +201,7 @@ public class FormVeiculo extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(tfStatus, javax.swing.GroupLayout.DEFAULT_SIZE, 263, Short.MAX_VALUE)
                                     .addComponent(tfTipo))
-                                .addGap(0, 314, Short.MAX_VALUE))
+                                .addGap(0, 326, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addComponent(tfModelo, javax.swing.GroupLayout.DEFAULT_SIZE, 263, Short.MAX_VALUE)
