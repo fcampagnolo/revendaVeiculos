@@ -10,7 +10,7 @@ USE `revveiculos` ;
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `revveiculos`.`veiculo` (
   `idVeiculo` INT(11) NOT NULL AUTO_INCREMENT ,
-  `placa` VARCHAR(6) NOT NULL ,
+  `placa` VARCHAR(7) NOT NULL ,
   `modelo` VARCHAR(45) NOT NULL ,
   `marca` VARCHAR(45) NOT NULL ,
   `cor` VARCHAR(45) NULL ,

@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.text.MaskFormatter;
+import util.FramePosition;
 
 public class FormVendedor extends javax.swing.JFrame {
 
@@ -43,6 +43,7 @@ public class FormVendedor extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         tfTelefone = new javax.swing.JFormattedTextField();
+        checkbox1 = new java.awt.Checkbox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -124,13 +125,13 @@ public class FormVendedor extends javax.swing.JFrame {
         jTable1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "Login", "Nome", "E-mail", "Telefone"
+                "ID", "Login", "Nome", "E-mail", "Telefone", "Adm"
             }
         ));
         jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -145,6 +146,8 @@ public class FormVendedor extends javax.swing.JFrame {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+
+        checkbox1.setLabel("Administrador");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -173,23 +176,27 @@ public class FormVendedor extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(tfNome)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(tfEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 423, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(tfTelefone)
-                                .addGap(1, 1, 1))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(tfLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel7)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(tfSenha))
-                            .addGroup(layout.createSequentialGroup()
                                 .addGap(232, 232, 232)
                                 .addComponent(jLabel8)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(tfPesquisa)))
+                                .addComponent(tfPesquisa))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(tfEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 423, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(tfLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabel7)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(tfSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(checkbox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel5)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(tfTelefone)
+                                        .addGap(1, 1, 1)))))
                         .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btNovo)
@@ -224,11 +231,13 @@ public class FormVendedor extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(tfTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel7)
-                    .addComponent(tfLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tfSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel6)
+                        .addComponent(jLabel7)
+                        .addComponent(tfLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(tfSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(checkbox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btNovo)
@@ -254,6 +263,7 @@ public class FormVendedor extends javax.swing.JFrame {
         v.setNome(jTable1.getValueAt(linha, 2).toString());
         v.setEmail(jTable1.getValueAt(linha, 3).toString());
         v.setTelefone(jTable1.getValueAt(linha, 4).toString());
+        v.setAdm(Boolean.parseBoolean(jTable1.getValueAt(linha, 5).toString()));
 
         tfId.setText(v.getIdVendedor().toString());
         tfNome.setText(v.getNome());
@@ -261,6 +271,7 @@ public class FormVendedor extends javax.swing.JFrame {
         tfTelefone.setText(v.getTelefone());
         tfLogin.setText(v.getLogin());
         tfSenha.setText(v.getSenha());
+        checkbox1.setState(v.getAdm());
     }//GEN-LAST:event_jTable1MouseClicked
 
     private void limparCampos() {
@@ -284,6 +295,7 @@ public class FormVendedor extends javax.swing.JFrame {
             v.setTelefone(tfTelefone.getText());
             v.setLogin(tfLogin.getText());
             v.setSenha(tfSenha.getText());
+            v.setAdm(checkbox1.getState());
 
             DAOGenerico dao = new DAOGenerico(v);
             dao.insere();
@@ -304,6 +316,7 @@ public class FormVendedor extends javax.swing.JFrame {
         v.setEmail(tfEmail.getText());
         v.setLogin(tfLogin.getText());
         v.setSenha(tfSenha.getText());
+        v.setAdm(checkbox1.getState());
 
         if (JOptionPane.showConfirmDialog(null, "Deseja realmente alterar este vendedor?",
             "Alteração", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
@@ -327,7 +340,8 @@ public class FormVendedor extends javax.swing.JFrame {
         v.setEmail(tfEmail.getText());
         v.setLogin(tfLogin.getText());
         v.setSenha(tfSenha.getText());
-
+        v.setAdm(checkbox1.getState());
+        
         if (JOptionPane.showConfirmDialog(null, "Deseja realmente excluir " + 
             v.getNome().toUpperCase() + "?", "Exclusão", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
             try {
@@ -360,7 +374,7 @@ public class FormVendedor extends javax.swing.JFrame {
             v = dao.listar(listar);
             for (Vendedor x : v) {
                 modelo.addRow(new Object[]{x.getIdVendedor(), x.getLogin(),
-                              x.getNome(), x.getEmail(), x.getTelefone()});
+                              x.getNome(), x.getEmail(), x.getTelefone(), x.getAdm()});
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Erro Lista JTABLE: " + e);
@@ -406,6 +420,7 @@ public class FormVendedor extends javax.swing.JFrame {
     private javax.swing.JButton btExcluir;
     private javax.swing.JButton btNovo;
     private javax.swing.JButton btSalvar;
+    private java.awt.Checkbox checkbox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

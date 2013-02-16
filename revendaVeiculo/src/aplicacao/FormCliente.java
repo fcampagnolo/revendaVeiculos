@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import util.FramePosition;
 
 public class FormCliente extends javax.swing.JFrame {
 
@@ -233,6 +234,31 @@ public class FormCliente extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public void limparCampos() {
+        tfId.setText("");
+        tfNome.setText("");
+        tfEmail.setText("");
+        tfTelefone.setText("");
+        tfEndereco.setText("");
+    }
+    
+    public void preencherJTable() {
+        jTable1.getColumnModel().getColumn(0).setPreferredWidth(5);
+        DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
+        modelo.setNumRows(0);
+        try {
+            DAOGenerico dao = new DAOGenerico(new Cliente());
+            List<Cliente> c = new ArrayList<Cliente>();
+            c = dao.listar(listar);
+            for (Cliente cl : c) {
+                modelo.addRow(new Object[]{cl.getIdCliente(), cl.getNome(),
+                              cl.getTelefone(), cl.getEmail(), cl.getEndereco()});
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Erro Lista JTABLE: " + e);
+        }
+    }
+    
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         int linha = jTable1.getSelectedRow();
 
@@ -282,7 +308,8 @@ public class FormCliente extends javax.swing.JFrame {
         c.setEmail(tfEmail.getText());
         c.setEndereco(tfEndereco.getText());
 
-        if (JOptionPane.showConfirmDialog(null, "Deseja realmente alterar este cliente?", "Alteração", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+        if (JOptionPane.showConfirmDialog(null, "Deseja realmente alterar este cliente?",
+            "Alteração", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
             try {
                 DAOGenerico dao = new DAOGenerico(c);
                 dao.atualiza();
@@ -303,7 +330,8 @@ public class FormCliente extends javax.swing.JFrame {
         c.setEmail(tfEmail.getText());
         c.setEndereco(tfEndereco.getText());
 
-        if (JOptionPane.showConfirmDialog(null, "Deseja realmente excluir " + c.getNome().toUpperCase() + "?", "Exclusão", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+        if (JOptionPane.showConfirmDialog(null, "Deseja realmente excluir " +
+            c.getNome().toUpperCase() + "?", "Exclusão", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
             try {
                 DAOGenerico dao = new DAOGenerico(c);
                 dao.excluir();
@@ -379,28 +407,4 @@ public class FormCliente extends javax.swing.JFrame {
     private javax.swing.JTextField tfPesquisa;
     private javax.swing.JFormattedTextField tfTelefone;
     // End of variables declaration//GEN-END:variables
-
-    public void preencherJTable() {
-        jTable1.getColumnModel().getColumn(0).setPreferredWidth(5);
-        DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
-        modelo.setNumRows(0);
-        try {
-            DAOGenerico dao = new DAOGenerico(new Cliente());
-            List<Cliente> c = new ArrayList<Cliente>();
-            c = dao.listar(listar);
-            for (Cliente cl : c) {
-                modelo.addRow(new Object[]{cl.getIdCliente(), cl.getNome(), cl.getTelefone(), cl.getEmail(), cl.getEndereco()});
-            }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Erro Lista JTABLE: " + e);
-        }
-    }
-
-    public void limparCampos() {
-        tfId.setText("");
-        tfNome.setText("");
-        tfEmail.setText("");
-        tfTelefone.setText("");
-        tfEndereco.setText("");
-    }
 }
