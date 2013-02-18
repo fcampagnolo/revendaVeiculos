@@ -31,7 +31,6 @@ public class FormVeiculo extends javax.swing.JFrame {
         tfMarca = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        tfPlaca = new javax.swing.JTextField();
         tfCor = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         tfCombustivel = new javax.swing.JTextField();
@@ -51,6 +50,7 @@ public class FormVeiculo extends javax.swing.JFrame {
         tfPesquisa = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        tfPlaca = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -83,8 +83,6 @@ public class FormVeiculo extends javax.swing.JFrame {
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel6.setText("Cor:");
-
-        tfPlaca.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
         tfCor.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
@@ -171,6 +169,12 @@ public class FormVeiculo extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTable1);
 
+        try {
+            tfPlaca.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("???####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -203,7 +207,7 @@ public class FormVeiculo extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addComponent(tfModelo, javax.swing.GroupLayout.DEFAULT_SIZE, 263, Short.MAX_VALUE)
                                     .addComponent(tfCombustivel)
-                                    .addComponent(tfPlaca))
+                                    .addComponent(tfPlaca, javax.swing.GroupLayout.Alignment.LEADING))
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(31, 31, 31)
@@ -256,8 +260,8 @@ public class FormVeiculo extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(jLabel6)
-                    .addComponent(tfPlaca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tfCor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfCor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfPlaca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
@@ -296,7 +300,7 @@ public class FormVeiculo extends javax.swing.JFrame {
         tfMarca.setText("");
         tfPlaca.setText("");
         tfCor.setText("");
-        tfStatus.setText("Disponivel");
+        tfStatus.setText("Disponível");
         tfValor.setText("0");
         tfCombustivel.setText("");
         tfKm.setText("");
@@ -498,7 +502,7 @@ public class FormVeiculo extends javax.swing.JFrame {
     private javax.swing.JTextField tfMarca;
     private javax.swing.JTextField tfModelo;
     private javax.swing.JTextField tfPesquisa;
-    private javax.swing.JTextField tfPlaca;
+    private javax.swing.JFormattedTextField tfPlaca;
     private javax.swing.JTextField tfStatus;
     private javax.swing.JTextField tfTipo;
     private javax.swing.JTextField tfValor;

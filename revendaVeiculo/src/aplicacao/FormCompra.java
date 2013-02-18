@@ -269,9 +269,9 @@ public class FormCompra extends javax.swing.JFrame {
         int linhaVeiculo = jTableVeiculo.getSelectedRow();
         Veiculo v = new Veiculo();
         v.setIdVeiculo(Integer.parseInt(jTableVeiculo.getValueAt(linhaVeiculo, 0).toString()));
-        v.setModelo(jTableVeiculo.getValueAt(linhaVeiculo, 1).toString());
-        v.setMarca(jTableVeiculo.getValueAt(linhaVeiculo, 2).toString());
-        v.setPlaca(jTableVeiculo.getValueAt(linhaVeiculo, 3).toString());
+        v.setPlaca(jTableVeiculo.getValueAt(linhaVeiculo, 1).toString());
+        v.setModelo(jTableVeiculo.getValueAt(linhaVeiculo, 2).toString());
+        v.setMarca(jTableVeiculo.getValueAt(linhaVeiculo, 3).toString());
         v.setCor(jTableVeiculo.getValueAt(linhaVeiculo, 4).toString());
         v.setCombustivel(jTableVeiculo.getValueAt(linhaVeiculo, 5).toString());
         v.setValor(Double.parseDouble(jTableVeiculo.getValueAt(linhaVeiculo, 6).toString()));
